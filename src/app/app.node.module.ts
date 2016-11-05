@@ -11,6 +11,8 @@ import { UniversalModule, isBrowser, isNode } from 'angular2-universal/node'; //
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { PCodeModule } from './pcode/pcode.module';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CacheService } from './universal-cache';
@@ -25,6 +27,7 @@ import { CacheService } from './universal-cache';
     SharedModule,
     HomeModule,
     AboutModule,
+    PCodeModule,
 
     AppRoutingModule
   ],

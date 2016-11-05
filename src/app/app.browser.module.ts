@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UniversalModule, isBrowser, isNode } from 'angular2-universal/browser'; // for AoT we need to manually split universal packages
+import { prebootComplete } from "angular2-universal";
 
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { PCodeModule } from './pcode/pcode.module';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CacheService } from './universal-cache';
+import { AUTO_PREBOOT } from "angular2-universal";
 
 // TODO(gdi2290): refactor into Universal
 export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
 
 @NgModule({
-  bootstrap: [ AppComponent ],
-  declarations: [ AppComponent ],
+  bootstrap: [AppComponent],
+  declarations: [AppComponent],
   imports: [
     UniversalModule, // BrowserModule, HttpModule, and JsonpModule are included
     FormsModule,
@@ -22,14 +26,16 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
     SharedModule,
     HomeModule,
     AboutModule,
+    PCodeModule,
 
     AppRoutingModule
   ],
   providers: [
     { provide: 'isBrowser', useValue: isBrowser },
     { provide: 'isNode', useValue: isNode },
+    { provide: AUTO_PREBOOT, useValue: false },
     CacheService
-  ]
+  ],
 
 })
 export class MainModule {

@@ -59,7 +59,7 @@ function ngApp(req, res) {
   res.render('index', {
     req,
     res,
-    preboot: false,
+    preboot: { appRoot: ['app'], uglify: true },
     baseUrl: '/',
     requestUrl: req.originalUrl,
     originUrl: 'http://localhost:3000'
@@ -72,7 +72,7 @@ app.get('/about', ngApp);
 app.get('/about/*', ngApp);
 app.get('/home', ngApp);
 app.get('/home/*', ngApp);
-
+app.get('/pcode/*', ngApp);
 
 app.get('*', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
